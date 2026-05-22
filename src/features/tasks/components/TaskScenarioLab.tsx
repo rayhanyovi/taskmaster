@@ -42,12 +42,12 @@ export function TaskScenarioLab({ onRefetch }: TaskScenarioLabProps) {
   return (
     <div className="fixed right-4 bottom-4 z-30 sm:right-6 sm:bottom-6">
       {isOpen ? (
-        <Card className="animate-pop-in w-[calc(100vw-2rem)] max-w-sm border-slate-200 bg-white shadow-[0_24px_70px_-28px_rgba(15,23,42,0.55)]">
+        <Card className="animate-pop-in w-[calc(100vw-2rem)] max-w-sm border-slate-200 bg-white shadow-[0_24px_70px_-28px_rgba(15,23,42,0.55)] dark:border-[#30363d] dark:bg-[#161b22] dark:shadow-[0_24px_70px_-28px_rgba(0,0,0,0.8)]">
           <CardContent>
           <div className="flex items-start justify-between gap-3">
             <div>
-              <h2 className="text-sm font-semibold text-slate-950">Scenario lab</h2>
-              <p className="mt-1 text-sm leading-6 text-slate-500">
+              <h2 className="text-sm font-semibold text-slate-950 dark:text-[#e6edf3]">Scenario lab</h2>
+              <p className="mt-1 text-sm leading-6 text-slate-500 dark:text-[#8b949e]">
                 Trigger one-time mock failures to verify retry, toast, and rollback behavior.
               </p>
             </div>
@@ -89,8 +89,8 @@ export function TaskScenarioLab({ onRefetch }: TaskScenarioLabProps) {
             <Button onClick={onRefetch}>Reload</Button>
           </div>
 
-          <div className="mt-4 border-t border-slate-100 pt-4">
-            <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+          <div className="mt-4 border-t border-slate-100 pt-4 dark:border-[#30363d]">
+            <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-[#6e7681]">
               Switch account
             </h3>
             <div className="mt-2 grid gap-2">
@@ -114,10 +114,10 @@ export function TaskScenarioLab({ onRefetch }: TaskScenarioLabProps) {
           </div>
 
           <div className="mt-4 flex flex-wrap gap-2">
-            <Badge className="border border-slate-200 bg-slate-50 normal-case tracking-normal text-slate-600">
+            <Badge className="border border-slate-200 bg-slate-50 normal-case tracking-normal text-slate-600 dark:border-[#30363d] dark:bg-[#21262d] dark:text-[#8b949e]">
               Load: {nextFailure.fetch ? 'armed' : 'idle'}
             </Badge>
-            <Badge className="border border-slate-200 bg-slate-50 normal-case tracking-normal text-slate-600">
+            <Badge className="border border-slate-200 bg-slate-50 normal-case tracking-normal text-slate-600 dark:border-[#30363d] dark:bg-[#21262d] dark:text-[#8b949e]">
               Save: {nextFailure.mutation ? 'armed' : 'idle'}
             </Badge>
             {hasArmedScenario ? (

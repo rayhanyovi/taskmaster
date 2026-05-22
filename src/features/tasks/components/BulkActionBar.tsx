@@ -28,11 +28,11 @@ export function BulkActionBar({
   if (selectedIds.length === 0) return null
 
   return (
-    <Card className="animate-slide-up-in flex flex-col gap-3 border-sky-200 bg-sky-50 p-3 md:flex-row md:items-center md:justify-between">
+    <Card className="animate-slide-up-in flex flex-col gap-3 border-sky-200 bg-sky-50 p-3 md:flex-row md:items-center md:justify-between dark:border-[#58a6ff]/20 dark:bg-[#161b22]">
       <div className="flex min-w-0 flex-wrap items-center gap-3">
         <button
           type="button"
-          className="inline-flex shrink-0 cursor-pointer items-center gap-2 whitespace-nowrap rounded-xl bg-white px-3 py-2 text-sm font-semibold text-sky-800 ring-1 ring-sky-200 transition-colors hover:bg-sky-100 focus:outline-none focus:ring-4 focus:ring-sky-100"
+          className="inline-flex shrink-0 cursor-pointer items-center gap-2 whitespace-nowrap rounded-xl bg-white px-3 py-2 text-sm font-semibold text-sky-800 ring-1 ring-sky-200 transition-colors hover:bg-sky-100 focus:outline-none focus:ring-4 focus:ring-sky-100 dark:bg-[#21262d] dark:text-[#58a6ff] dark:ring-[#58a6ff]/30 dark:hover:bg-[#30363d]"
           onClick={() => onSelectVisible(visibleIds)}
         >
           <span
@@ -48,7 +48,7 @@ export function BulkActionBar({
           </span>
           Select all visible
         </button>
-        <span className="whitespace-nowrap rounded-full bg-sky-100 px-3 py-1 text-sm font-semibold text-sky-950">
+        <span className="whitespace-nowrap rounded-full bg-sky-100 px-3 py-1 text-sm font-semibold text-sky-950 dark:bg-[#21262d] dark:text-[#58a6ff]">
           {selectedIds.length} selected
         </span>
       </div>

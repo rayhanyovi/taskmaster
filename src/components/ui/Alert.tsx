@@ -9,7 +9,7 @@ export const Alert = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
     <div
       ref={ref}
       role="alert"
-      className={cn('rounded-[8px] border border-slate-200 bg-white p-4 text-slate-950', className)}
+      className={cn('rounded-[8px] border border-slate-200 bg-white p-4 text-slate-950 dark:border-[#30363d] dark:bg-[#161b22] dark:text-[#e6edf3]', className)}
       {...props}
     />
   )

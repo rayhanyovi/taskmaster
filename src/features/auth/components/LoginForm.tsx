@@ -56,8 +56,8 @@ export function LoginForm() {
           <LogIn className="h-3.5 w-3.5" />
           Demo access
         </Badge>
-        <h1 className="text-3xl font-bold tracking-tight text-slate-950">TaskMaster</h1>
-        <p className="text-sm leading-6 text-slate-500">
+        <h1 className="text-3xl font-bold tracking-tight text-slate-950 dark:text-[#e6edf3]">TaskMaster</h1>
+        <p className="text-sm leading-6 text-slate-500 dark:text-[#8b949e]">
           Manage your tasks with a focused offline workspace.
         </p>
       </div>
@@ -87,30 +87,30 @@ export function LoginForm() {
         <span>{mutation.isPending ? 'Signing in...' : 'Login'}</span>
       </Button>
 
-      <Card className="bg-slate-50 text-sm text-slate-500">
+      <Card className="bg-slate-50 text-sm text-slate-500 dark:bg-[#0d1117] dark:text-[#8b949e]">
         <CardContent className="px-4 py-3">
-        <div className="font-semibold text-slate-700">Demo credentials</div>
+        <div className="font-semibold text-slate-700 dark:text-[#e6edf3]">Demo credentials</div>
         <div className="mt-3 grid gap-2">
           {demoAccounts.map((account) => (
             <button
               key={account.email}
               type="button"
-              className="flex items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white px-3 py-2 text-left transition-colors hover:border-sky-200 hover:bg-sky-50"
+              className="flex items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white px-3 py-2 text-left transition-colors hover:border-sky-200 hover:bg-sky-50 dark:border-[#30363d] dark:bg-[#161b22] dark:hover:border-[#58a6ff]/30 dark:hover:bg-[#21262d]"
               onClick={() => {
                 setValue('email', account.email, { shouldValidate: true })
                 setValue('password', account.password, { shouldValidate: true })
               }}
             >
               <span className="min-w-0">
-                <span className="flex items-center gap-2 font-medium text-slate-800">
-                  <UserRound className="h-3.5 w-3.5 text-slate-400" />
+                <span className="flex items-center gap-2 font-medium text-slate-800 dark:text-[#e6edf3]">
+                  <UserRound className="h-3.5 w-3.5 text-slate-400 dark:text-[#6e7681]" />
                   {account.label}
                 </span>
-                <span className="mt-0.5 block truncate text-xs text-slate-500">
+                <span className="mt-0.5 block truncate text-xs text-slate-500 dark:text-[#8b949e]">
                   {account.email}
                 </span>
               </span>
-              <span className="text-xs font-semibold text-sky-700">Use</span>
+              <span className="text-xs font-semibold text-sky-700 dark:text-[#58a6ff]">Use</span>
             </button>
           ))}
         </div>

@@ -7,6 +7,6 @@ export function TaskCommandDeck() {
   })
 
   return (
-    <p className="text-sm font-medium text-slate-500">{currentDate}</p>
+    <p className="text-sm font-medium text-slate-500 dark:text-[#8b949e]">{currentDate}</p>
   )
 }

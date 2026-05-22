@@ -9,19 +9,19 @@ export interface ButtonStyleProps {
 
 const variantClasses: Record<NonNullable<ButtonStyleProps['variant']>, string> = {
   default:
-    'bg-slate-900 text-slate-50 shadow-sm hover:bg-slate-800 focus-visible:outline-slate-900',
+    'bg-slate-900 text-slate-50 shadow-sm hover:bg-slate-800 focus-visible:outline-slate-900 dark:bg-[#21262d] dark:text-[#e6edf3] dark:hover:bg-[#30363d]',
   primary:
     'bg-sky-500 text-white shadow-sm hover:-translate-y-0.5 hover:bg-sky-600 hover:shadow-md focus-visible:outline-sky-500',
   secondary:
-    'bg-white text-slate-700 ring-1 ring-inset ring-slate-200 hover:bg-slate-50 hover:text-slate-900 focus-visible:outline-slate-400',
+    'bg-white text-slate-700 ring-1 ring-inset ring-slate-200 hover:bg-slate-50 hover:text-slate-900 focus-visible:outline-slate-400 dark:bg-[#21262d] dark:text-[#e6edf3] dark:ring-[#30363d] dark:hover:bg-[#30363d] dark:hover:text-[#e6edf3]',
   destructive:
     'bg-red-600 text-white shadow-sm hover:-translate-y-0.5 hover:bg-red-700 hover:shadow-md focus-visible:outline-red-600',
   danger:
     'bg-red-600 text-white shadow-sm hover:-translate-y-0.5 hover:bg-red-700 hover:shadow-md focus-visible:outline-red-600',
   ghost:
-    'bg-transparent text-slate-500 hover:bg-slate-100 hover:text-slate-800 focus-visible:outline-slate-400',
+    'bg-transparent text-slate-500 hover:bg-slate-100 hover:text-slate-800 focus-visible:outline-slate-400 dark:text-[#8b949e] dark:hover:bg-[#21262d] dark:hover:text-[#e6edf3]',
   outline:
-    'border border-slate-200 bg-white text-slate-700 shadow-sm hover:bg-slate-50 hover:text-slate-900 focus-visible:outline-slate-400',
+    'border border-slate-200 bg-white text-slate-700 shadow-sm hover:bg-slate-50 hover:text-slate-900 focus-visible:outline-slate-400 dark:border-[#30363d] dark:bg-[#161b22] dark:text-[#e6edf3] dark:hover:bg-[#21262d]',
 }
 
 const sizeClasses: Record<NonNullable<ButtonStyleProps['size']>, string> = {

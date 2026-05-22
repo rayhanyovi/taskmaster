@@ -11,7 +11,7 @@ export function App() {
         position="top-right"
         toastOptions={{
           duration: 3000,
-          className: 'border border-gray-200 bg-white text-sm text-gray-900 shadow-lg',
+          className: 'border border-gray-200 bg-white text-sm text-gray-900 shadow-lg dark:border-[#30363d] dark:bg-[#161b22] dark:text-[#e6edf3]',
         }}
       />
     </AppProviders>

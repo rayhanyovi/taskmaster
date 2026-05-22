@@ -58,10 +58,10 @@ export function TaskForm({
   return (
     <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
       <div>
-        <h2 className="text-xl font-semibold text-gray-900">
+        <h2 className="text-xl font-semibold text-gray-900 dark:text-[#e6edf3]">
           {task ? 'Task details' : 'Create a new task'}
         </h2>
-        <p className="mt-1 text-sm text-gray-500">
+        <p className="mt-1 text-sm text-gray-500 dark:text-[#8b949e]">
           {task
             ? 'Review the task, update its fields, or remove it from the board.'
             : 'Capture the next task for your queue.'}
@@ -119,7 +119,7 @@ export function TaskForm({
         {task && onDelete ? (
           <Button
             variant="ghost"
-            className="justify-start gap-2 text-red-600 hover:bg-red-50 hover:text-red-700"
+            className="justify-start gap-2 text-red-600 hover:bg-red-50 hover:text-red-700 dark:text-[#f85149] dark:hover:bg-red-950/30 dark:hover:text-[#f85149]"
             disabled={isSubmitting || isDeleting}
             onClick={onDelete}
           >

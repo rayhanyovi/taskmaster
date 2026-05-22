@@ -7,13 +7,13 @@ export function TaskLoadingSkeleton() {
       {Array.from({ length: 4 }).map((_, index) => (
         <Card
           key={index}
-          className="border-slate-200 bg-white/95"
+          className="border-slate-200 bg-white/95 dark:border-[#30363d] dark:bg-[#161b22]/95"
         >
           <CardContent className="flex items-start gap-4">
             <Skeleton className="mt-1 h-5 w-5 rounded-full" />
             <div className="flex-1 space-y-3">
               <Skeleton className="h-4 w-1/3" />
-              <Skeleton className="h-3 w-2/3 bg-slate-100" />
+              <Skeleton className="h-3 w-2/3 bg-slate-100 dark:bg-[#21262d]/60" />
             </div>
           </CardContent>
         </Card>

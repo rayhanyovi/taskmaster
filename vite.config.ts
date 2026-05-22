@@ -12,13 +12,24 @@ export default defineConfig({
   ],
   build: {
     rollupOptions: {
+      onwarn(warning, warn) {
+        // Suppress Rolldown false-positive for react-router sub-path exports
+        if (
+          warning.code === 'UNRESOLVED_IMPORT' &&
+          typeof warning.message === 'string' &&
+          warning.message.includes('react-router/dom')
+        ) {
+          return
+        }
+        warn(warning)
+      },
       output: {
         manualChunks(id) {
           if (id.includes('node_modules/react') || id.includes('node_modules/react-dom')) {
             return 'react'
           }
 
-          if (id.includes('node_modules/react-router-dom')) {
+          if (id.includes('node_modules/react-router')) {
             return 'react'
           }
 

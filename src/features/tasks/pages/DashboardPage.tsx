@@ -1,4 +1,4 @@
-import { LogOut, UserCircle } from 'lucide-react'
+import { LogOut, Moon, Sun, UserCircle } from 'lucide-react'
 import { AppFooter } from '../../../components/layout/AppFooter'
 import { Button } from '../../../components/ui/Button'
 import { ConfirmDialog } from '../../../components/ui/ConfirmDialog'
@@ -7,6 +7,7 @@ import { ErrorAlert } from '../../../components/ui/ErrorAlert'
 import { LoginForm } from '../../auth/components/LoginForm'
 import { useAuth } from '../../auth/hooks/useAuth'
 import { useTaskWorkspace } from '../hooks/useTaskWorkspace'
+import { useThemeStore } from '../../../store/themeStore'
 import { BulkActionBar } from '../components/BulkActionBar'
 import { TaskCommandDeck } from '../components/TaskCommandDeck'
 import { TaskFormModal } from '../components/TaskFormModal'
@@ -26,9 +27,19 @@ export function DashboardPage() {
 
 // ── Login screen ──────────────────────────────────────────────────────────────
 function LoginScreen() {
+  const { theme, toggleTheme } = useThemeStore()
+
   return (
     <main className="flex min-h-screen items-center justify-center px-4 py-10">
-      <div className="w-full max-w-md rounded-[28px] border border-slate-200/70 bg-white/96 p-6 shadow-[0_24px_70px_-28px_rgba(15,23,42,0.28)] backdrop-blur-sm sm:p-8">
+      <button
+        type="button"
+        aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+        onClick={toggleTheme}
+        className="fixed right-4 top-4 grid h-9 w-9 place-items-center rounded-xl border border-slate-200 bg-white/80 text-slate-500 shadow-sm backdrop-blur-sm transition-colors hover:border-slate-300 hover:text-slate-900 dark:border-[#30363d] dark:bg-[#161b22]/80 dark:text-[#8b949e] dark:hover:border-[#58a6ff]/40 dark:hover:text-[#e6edf3]"
+      >
+        {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+      </button>
+      <div className="w-full max-w-md rounded-[28px] border border-slate-200/70 bg-white/96 p-6 shadow-[0_24px_70px_-28px_rgba(15,23,42,0.28)] backdrop-blur-sm sm:p-8 dark:border-[#30363d] dark:bg-[#161b22]/96 dark:shadow-[0_24px_70px_-28px_rgba(0,0,0,0.7)]">
         <LoginForm />
       </div>
     </main>
@@ -38,6 +49,7 @@ function LoginScreen() {
 // ── Workspace ─────────────────────────────────────────────────────────────────
 // Pure render layer — all state and handlers come from useTaskWorkspace.
 function TaskWorkspace() {
+  const { theme, toggleTheme } = useThemeStore()
   const {
     tasks,
     filteredTasks,
@@ -79,25 +91,33 @@ function TaskWorkspace() {
     <div className="flex min-h-screen flex-col">
 
       {/* ── Header ── */}
-      <header className="border-b border-white/40 bg-white/70 backdrop-blur-md">
+      <header className="border-b border-white/40 bg-white/70 backdrop-blur-md dark:border-[#30363d] dark:bg-[#0d1117]/70">
         <div className="relative flex min-h-20 items-center justify-center px-4 py-4 sm:px-6">
-          <h1 className="text-lg font-bold tracking-[0.28em] text-slate-950">TASKMASTER</h1>
+          <h1 className="text-lg font-bold tracking-[0.28em] text-slate-950 dark:text-[#e6edf3]">TASKMASTER</h1>
 
           <div className="absolute right-2 top-1/2 flex -translate-y-1/2 items-center gap-2 sm:right-6 sm:gap-3">
-            <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white/80 px-2 py-2 shadow-sm lg:px-4 lg:py-3">
-              <div className="grid h-10 w-10 place-items-center rounded-full bg-sky-100 text-sm font-bold text-sky-700">
+            <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white/80 px-2 py-2 shadow-sm lg:px-4 lg:py-3 dark:border-[#30363d] dark:bg-[#161b22]/80">
+              <div className="grid h-10 w-10 place-items-center rounded-full bg-sky-100 text-sm font-bold text-sky-700 dark:bg-[#21262d] dark:text-[#58a6ff]">
                 {avatarInitial}
               </div>
               <div className="hidden text-right lg:block">
-                <div className="flex items-center justify-end gap-1.5 text-sm font-semibold text-slate-800">
-                  <UserCircle className="h-4 w-4 text-slate-400" />
+                <div className="flex items-center justify-end gap-1.5 text-sm font-semibold text-slate-800 dark:text-[#e6edf3]">
+                  <UserCircle className="h-4 w-4 text-slate-400 dark:text-[#6e7681]" />
                   {session?.email}
                 </div>
-                <div className="text-xs text-slate-500">
+                <div className="text-xs text-slate-500 dark:text-[#6e7681]">
                   {sessionDateLabel ? `Session restored from ${sessionDateLabel}` : 'Single-user demo'}
                 </div>
               </div>
             </div>
+            <button
+              type="button"
+              aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+              onClick={toggleTheme}
+              className="grid h-10 w-10 place-items-center rounded-xl border border-slate-200 bg-white/80 text-slate-500 shadow-sm transition-colors hover:border-slate-300 hover:text-slate-900 dark:border-[#30363d] dark:bg-[#161b22]/80 dark:text-[#8b949e] dark:hover:border-[#58a6ff]/40 dark:hover:text-[#e6edf3]"
+            >
+              {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+            </button>
             <Button variant="secondary" className="gap-2 px-3 sm:px-4" onClick={() => void logout()}>
               <LogOut className="h-4 w-4" />
               <span className="hidden sm:inline">Logout</span>

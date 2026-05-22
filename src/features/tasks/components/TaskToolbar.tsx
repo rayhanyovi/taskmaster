@@ -28,7 +28,7 @@ export function TaskToolbar({ tasks, visibleCount, onCreate }: TaskToolbarProps)
   const setViewMode = useTaskFilterStore((state) => state.setViewMode)
 
   return (
-    <Card className="animate-fade-in border-slate-200/80 bg-white/88 backdrop-blur-sm">
+    <Card className="animate-fade-in border-slate-200/80 bg-white/88 backdrop-blur-sm dark:border-[#30363d]/80 dark:bg-[#161b22]/88">
       <CardContent className="flex flex-col gap-4">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
           <TaskSearchInput />
@@ -39,7 +39,7 @@ export function TaskToolbar({ tasks, visibleCount, onCreate }: TaskToolbarProps)
         </div>
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
-            <div className="flex gap-1 rounded-[8px] bg-slate-100/90 p-1.5">
+            <div className="flex gap-1 rounded-[8px] bg-slate-100/90 p-1.5 dark:bg-[#21262d]/90">
               {viewModes.map((mode) => {
                 const active = viewMode === mode.value
                 const Icon = mode.Icon
@@ -53,8 +53,8 @@ export function TaskToolbar({ tasks, visibleCount, onCreate }: TaskToolbarProps)
                     className={cn(
                       'grid h-9 w-10 place-items-center rounded-md transition-all duration-200',
                       active
-                        ? 'bg-white font-medium text-slate-950 shadow-sm'
-                        : 'text-slate-500 hover:text-slate-700',
+                        ? 'bg-white font-medium text-slate-950 shadow-sm dark:bg-[#161b22] dark:text-[#e6edf3]'
+                        : 'text-slate-500 hover:text-slate-700 dark:text-[#8b949e] dark:hover:text-[#e6edf3]',
                     )}
                     onClick={() => setViewMode(mode.value)}
                   >
@@ -65,7 +65,7 @@ export function TaskToolbar({ tasks, visibleCount, onCreate }: TaskToolbarProps)
             </div>
             <TaskFilterTabs tasks={tasks} />
           </div>
-          <p className="text-sm font-medium text-slate-500">
+          <p className="text-sm font-medium text-slate-500 dark:text-[#8b949e]">
             Showing {visibleCount} of {tasks.length} tasks
           </p>
         </div>

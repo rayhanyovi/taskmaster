@@ -42,7 +42,7 @@ export const DialogContent = forwardRef<
       <DialogPrimitive.Content
         ref={ref}
         className={cn(
-          'fixed left-1/2 top-1/2 z-50 w-[calc(100%-2rem)] max-w-lg -translate-x-1/2 -translate-y-1/2 rounded-[8px] border border-white/70 bg-white p-6 shadow-2xl outline-none data-[state=open]:animate-dialog-in',
+          'fixed left-1/2 top-1/2 z-50 w-[calc(100%-2rem)] max-w-lg -translate-x-1/2 -translate-y-1/2 rounded-[8px] border border-white/70 bg-white p-6 shadow-2xl outline-none data-[state=open]:animate-dialog-in dark:border-[#30363d] dark:bg-[#161b22]',
           className,
         )}
         {...props}
@@ -68,7 +68,7 @@ export const DialogTitle = forwardRef<
   return (
     <DialogPrimitive.Title
       ref={ref}
-      className={cn('text-lg font-semibold leading-none tracking-tight text-slate-950', className)}
+      className={cn('text-lg font-semibold leading-none tracking-tight text-slate-950 dark:text-[#e6edf3]', className)}
       {...props}
     />
   )
@@ -81,7 +81,7 @@ export const DialogDescription = forwardRef<
   return (
     <DialogPrimitive.Description
       ref={ref}
-      className={cn('text-sm leading-6 text-slate-500', className)}
+      className={cn('text-sm leading-6 text-slate-500 dark:text-[#8b949e]', className)}
       {...props}
     />
   )

@@ -15,7 +15,7 @@ export function TaskSearchInput() {
 
   return (
     <div className="relative flex-1">
-      <Search className="pointer-events-none absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-slate-400" />
+      <Search className="pointer-events-none absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-slate-400 dark:text-[#6e7681]" />
       <Input
         value={draft}
         onChange={(event) => setDraft(event.target.value)}
@@ -26,7 +26,7 @@ export function TaskSearchInput() {
         <button
           type="button"
           aria-label="Clear search"
-          className="absolute top-1/2 right-3 -translate-y-1/2 text-slate-400 transition-colors hover:text-slate-700"
+          className="absolute top-1/2 right-3 -translate-y-1/2 text-slate-400 transition-colors hover:text-slate-700 dark:text-[#6e7681] dark:hover:text-[#e6edf3]"
           onClick={() => {
             setDraft('')
             setSearchKeyword('')

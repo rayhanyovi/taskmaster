@@ -30,15 +30,15 @@ interface TaskItemProps {
 const statusMeta: Record<TaskStatus, { label: string; className: string }> = {
   todo: {
     label: 'To do',
-    className: 'bg-slate-100 text-slate-600 ring-slate-200',
+    className: 'bg-slate-100 text-slate-600 ring-slate-200 dark:bg-[#21262d] dark:text-[#8b949e] dark:ring-[#30363d]',
   },
   in_progress: {
     label: 'In progress',
-    className: 'bg-yellow-100 text-yellow-800 ring-yellow-200',
+    className: 'bg-yellow-100 text-yellow-800 ring-yellow-200 dark:bg-[#2d1f00] dark:text-[#d29922] dark:ring-[#5c3d00]',
   },
   completed: {
     label: 'Completed',
-    className: 'bg-green-100 text-green-700 ring-green-200',
+    className: 'bg-green-100 text-green-700 ring-green-200 dark:bg-[#0d2818] dark:text-[#3fb950] dark:ring-[#1f4b2e]',
   },
 }
 
@@ -113,8 +113,8 @@ export function TaskItem({
   return (
     <Card
       className={cn(
-        'animate-slide-up-in bg-white/95 transition-all duration-200 hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-[0_18px_36px_-24px_rgba(15,23,42,0.45)]',
-        isSelected ? 'border-sky-300 ring-2 ring-sky-100' : 'border-slate-200',
+        'animate-slide-up-in bg-white/95 transition-all duration-200 hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-[0_18px_36px_-24px_rgba(15,23,42,0.45)] dark:bg-[#161b22]/95 dark:hover:border-[#58a6ff]/40 dark:hover:shadow-[0_18px_36px_-24px_rgba(0,0,0,0.6)]',
+        isSelected ? 'border-sky-300 ring-2 ring-sky-100 dark:border-[#58a6ff]/60 dark:ring-[#58a6ff]/20' : 'border-slate-200 dark:border-[#30363d]',
       )}
       onPointerDown={handlePointerDown}
       onPointerUp={clearLongPress}
@@ -145,15 +145,15 @@ export function TaskItem({
               className={cn(
                 'mt-0.5 flex h-5 w-5 items-center justify-center rounded-full border-2 transition-all duration-200',
                 task.status === 'completed'
-                  ? 'border-green-600 bg-green-600 text-white'
-                  : 'border-slate-300 bg-white text-transparent hover:border-yellow-400',
+                  ? 'border-green-600 bg-green-600 text-white dark:border-[#3fb950] dark:bg-[#3fb950]'
+                  : 'border-slate-300 bg-white text-transparent hover:border-yellow-400 dark:border-[#30363d] dark:bg-[#161b22] dark:hover:border-yellow-500',
               )}
             >
               <Check className="h-3 w-3" />
             </button>
 
             {showStatusMenu ? (
-              <div className="absolute left-0 top-7 z-20 w-40 overflow-hidden rounded-xl border border-slate-200 bg-white py-1 shadow-lg animate-pop-in">
+              <div className="absolute left-0 top-7 z-20 w-40 overflow-hidden rounded-xl border border-slate-200 bg-white py-1 shadow-lg animate-pop-in dark:border-[#30363d] dark:bg-[#21262d]">
                 <Button
                   variant="ghost"
                   className="h-9 w-full justify-start gap-2 rounded-none px-3 text-yellow-700 hover:bg-yellow-50 hover:text-yellow-800"
@@ -180,8 +180,8 @@ export function TaskItem({
             <div className="min-w-0">
               <h3
                 className={cn(
-                  'truncate text-sm font-semibold text-slate-950',
-                  task.status === 'completed' && 'text-slate-400 line-through',
+                  'truncate text-sm font-semibold text-slate-950 dark:text-[#e6edf3]',
+                  task.status === 'completed' && 'text-slate-400 line-through dark:text-[#6e7681]',
                 )}
               >
                 {task.title}
@@ -189,7 +189,7 @@ export function TaskItem({
               {task.description ? (
                 <p
                   className={cn(
-                    'mt-2 text-sm leading-6 text-slate-500',
+                    'mt-2 text-sm leading-6 text-slate-500 dark:text-[#8b949e]',
                     compact &&
                       'line-clamp-3 overflow-hidden [display:-webkit-box] [-webkit-box-orient:vertical]',
                   )}
@@ -197,7 +197,7 @@ export function TaskItem({
                   {task.description}
                 </p>
               ) : null}
-              <p className="mt-3 text-xs text-slate-400">
+              <p className="mt-3 text-xs text-slate-400 dark:text-[#6e7681]">
                 Updated {new Date(task.updatedAt).toLocaleDateString()}
               </p>
             </div>
@@ -216,7 +216,7 @@ export function TaskItem({
                 <DropdownMenuTrigger asChild>
                   <button
                     type="button"
-                    className="grid h-8 w-8 place-items-center rounded-full text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-900"
+                    className="grid h-8 w-8 place-items-center rounded-full text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:text-[#8b949e] dark:hover:bg-[#21262d] dark:hover:text-[#e6edf3]"
                     aria-label={`More actions for ${task.title}`}
                   >
                     <MoreHorizontal className="h-4 w-4" />
