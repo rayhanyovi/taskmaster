@@ -16,14 +16,14 @@ interface TaskListProps {
 }
 
 const columns: Array<{ status: TaskStatus; label: string; hint: string; className: string }> = [
-  { status: 'todo', label: 'To do', hint: 'Planned', className: 'bg-slate-100' },
+  { status: 'todo', label: 'To do', hint: 'Planned', className: 'bg-slate-100 dark:bg-[#21262d]' },
   {
     status: 'in_progress',
     label: 'In progress',
     hint: 'Moving',
-    className: 'bg-yellow-100',
+    className: 'bg-yellow-100 dark:bg-[#2d1f00]',
   },
-  { status: 'completed', label: 'Completed', hint: 'Done', className: 'bg-green-100' },
+  { status: 'completed', label: 'Completed', hint: 'Done', className: 'bg-green-100 dark:bg-[#0d2818]' },
 ]
 
 export function TaskList(props: TaskListProps) {
@@ -83,7 +83,7 @@ export function TaskList(props: TaskListProps) {
           return (
             <section
               key={column.status}
-              className={cn('min-h-64 rounded-[8px] border border-slate-200 p-3', column.className)}
+              className={cn('min-h-64 rounded-[8px] border border-slate-200 p-3 dark:border-[#30363d]', column.className)}
               onDragOver={(event) => {
                 event.preventDefault()
                 event.dataTransfer.dropEffect = 'move'
@@ -92,10 +92,10 @@ export function TaskList(props: TaskListProps) {
             >
               <div className="mb-3 flex items-center justify-between">
                 <div>
-                  <h2 className="text-sm font-semibold text-slate-900">{column.label}</h2>
-                  <p className="text-xs text-slate-500">{column.hint}</p>
+                  <h2 className="text-sm font-semibold text-slate-900 dark:text-[#e6edf3]">{column.label}</h2>
+                  <p className="text-xs text-slate-500 dark:text-[#8b949e]">{column.hint}</p>
                 </div>
-                <span className="rounded-full bg-white px-2 py-1 text-xs font-semibold text-slate-500 ring-1 ring-slate-200">
+                <span className="rounded-full bg-white px-2 py-1 text-xs font-semibold text-slate-500 ring-1 ring-slate-200 dark:bg-[#161b22] dark:text-[#8b949e] dark:ring-[#30363d]">
                   {columnTasks.length}
                 </span>
               </div>
@@ -103,7 +103,7 @@ export function TaskList(props: TaskListProps) {
                 className={cn(
                   'space-y-3',
                   columnTasks.length === 0 &&
-                    'grid min-h-32 place-items-center rounded-[8px] border border-dashed border-slate-200 bg-white/70 text-sm text-slate-400',
+                    'grid min-h-32 place-items-center rounded-[8px] border border-dashed border-slate-200 bg-white/70 text-sm text-slate-400 dark:border-[#30363d] dark:bg-[#161b22]/40 dark:text-[#6e7681]',
                 )}
               >
                 {columnTasks.length > 0
