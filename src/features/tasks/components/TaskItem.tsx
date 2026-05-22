@@ -1,10 +1,9 @@
 import { Check, Circle, MoreHorizontal, Pencil, Play, Trash2 } from 'lucide-react'
-import { useEffect, useRef, useState, type MouseEvent, type PointerEvent } from 'react'
+import { useEffect, useRef, type MouseEvent, type PointerEvent } from 'react'
 import { Badge } from '../../../components/ui/Badge'
 import { Checkbox } from '../../../components/ui/Checkbox'
 import type { Task, TaskStatus } from '../../../types/task'
 import { cn } from '../../../utils/cn'
-import { Button } from '../../../components/ui/Button'
 import { Card, CardContent } from '../../../components/ui/Card'
 import {
   DropdownMenu,
@@ -55,7 +54,6 @@ export function TaskItem({
   onDelete,
 }: TaskItemProps) {
   const status = statusMeta[task.status]
-  const [showStatusMenu, setShowStatusMenu] = useState(false)
   const longPressTimer = useRef<number | null>(null)
   const suppressNextClick = useRef(false)
 
@@ -96,19 +94,6 @@ export function TaskItem({
     onOpenDetails(task)
   }
 
-  const handleStatusControlClick = () => {
-    if (task.status === 'todo') {
-      setShowStatusMenu((current) => !current)
-      return
-    }
-
-    onToggleComplete(task)
-  }
-
-  const handleStatusMenuSelect = (nextStatus: TaskStatus) => {
-    setShowStatusMenu(false)
-    onStatusChange(task, nextStatus)
-  }
 
   return (
     <Card
@@ -132,46 +117,57 @@ export function TaskItem({
           />
         ) : (
           <div className="relative">
-            <button
-              type="button"
-              aria-label={
-                task.status === 'todo'
-                  ? `Choose status for ${task.title}`
-                  : task.status === 'completed'
+            {task.status === 'todo' ? (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <button
+                    type="button"
+                    aria-label={`Choose status for ${task.title}`}
+                    className="mt-0.5 flex h-5 w-5 items-center justify-center rounded-full border-2 border-slate-300 bg-white text-transparent transition-all duration-200 hover:border-yellow-400 dark:border-[#30363d] dark:bg-[#161b22] dark:hover:border-yellow-500"
+                  >
+                    <Check className="h-3 w-3" />
+                  </button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent
+                  align="start"
+                  side="bottom"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <DropdownMenuItem
+                    className="gap-2 text-yellow-700 focus:bg-yellow-50 focus:text-yellow-800 dark:text-[#d29922] dark:focus:bg-[#2d1f00]"
+                    onSelect={() => onStatusChange(task, 'in_progress')}
+                  >
+                    <Play className="h-4 w-4" />
+                    In progress
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    className="gap-2 text-green-700 focus:bg-green-50 focus:text-green-800 dark:text-[#3fb950] dark:focus:bg-[#0d2818]"
+                    onSelect={() => onStatusChange(task, 'completed')}
+                  >
+                    <Check className="h-4 w-4" />
+                    Complete
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <button
+                type="button"
+                aria-label={
+                  task.status === 'completed'
                     ? `Mark ${task.title} in progress`
                     : `Mark ${task.title} complete`
-              }
-              onClick={handleStatusControlClick}
-              className={cn(
-                'mt-0.5 flex h-5 w-5 items-center justify-center rounded-full border-2 transition-all duration-200',
-                task.status === 'completed'
-                  ? 'border-green-600 bg-green-600 text-white dark:border-[#3fb950] dark:bg-[#3fb950]'
-                  : 'border-slate-300 bg-white text-transparent hover:border-yellow-400 dark:border-[#30363d] dark:bg-[#161b22] dark:hover:border-yellow-500',
-              )}
-            >
-              <Check className="h-3 w-3" />
-            </button>
-
-            {showStatusMenu ? (
-              <div className="absolute left-0 top-7 z-20 w-40 overflow-hidden rounded-xl border border-slate-200 bg-white py-1 shadow-lg animate-pop-in dark:border-[#30363d] dark:bg-[#21262d]">
-                <Button
-                  variant="ghost"
-                  className="h-9 w-full justify-start gap-2 rounded-none px-3 text-yellow-700 hover:bg-yellow-50 hover:text-yellow-800"
-                  onClick={() => handleStatusMenuSelect('in_progress')}
-                >
-                  <Play className="h-4 w-4" />
-                  In progress
-                </Button>
-                <Button
-                  variant="ghost"
-                  className="h-9 w-full justify-start gap-2 rounded-none px-3 text-green-700 hover:bg-green-50 hover:text-green-800"
-                  onClick={() => handleStatusMenuSelect('completed')}
-                >
-                  <Check className="h-4 w-4" />
-                  Complete
-                </Button>
-              </div>
-            ) : null}
+                }
+                onClick={() => onToggleComplete(task)}
+                className={cn(
+                  'mt-0.5 flex h-5 w-5 items-center justify-center rounded-full border-2 transition-all duration-200',
+                  task.status === 'completed'
+                    ? 'border-green-600 bg-green-600 text-white dark:border-[#3fb950] dark:bg-[#3fb950]'
+                    : 'border-slate-300 bg-white text-transparent hover:border-yellow-400 dark:border-[#30363d] dark:bg-[#161b22] dark:hover:border-yellow-500',
+                )}
+              >
+                <Check className="h-3 w-3" />
+              </button>
+            )}
           </div>
         )}
 
