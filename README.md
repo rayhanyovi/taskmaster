@@ -182,8 +182,7 @@ npm run test:e2e      # E2E browser tests (needs npm run dev or auto-starts)
 
 ## Known Limitations
 
-- Persistence is browser-local and shared across demo accounts
-- No real backend or network I/O
+- Persistence is browser-local only — no real backend or network I/O
 - No due dates, tags, subtasks, or dark mode
 
 ## Future Improvements

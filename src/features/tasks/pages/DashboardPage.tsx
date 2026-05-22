@@ -76,7 +76,7 @@ function TaskWorkspace() {
   } = useTaskWorkspace()
 
   return (
-    <div className="min-h-screen">
+    <div className="flex min-h-screen flex-col">
 
       {/* ── Header ── */}
       <header className="border-b border-white/40 bg-white/70 backdrop-blur-md">
@@ -107,7 +107,7 @@ function TaskWorkspace() {
       </header>
 
       {/* ── Main content ── */}
-      <main className="mx-auto max-w-4xl px-4 py-6 pb-0 sm:px-6">
+      <main className="mx-auto w-full max-w-4xl flex-1 px-4 py-6 sm:px-6">
         <div className="space-y-5">
           <TaskCommandDeck />
 
